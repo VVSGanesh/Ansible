@@ -1,5 +1,5 @@
 - name: Demo Role
   tasks:
-    - name: variable from role
+    - name: Role
       ansible.builtin.debug:
-        msg: "Hello from Roles"
+        msg: "Hello World"
