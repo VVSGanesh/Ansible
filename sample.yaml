@@ -1,1 +1,6 @@
--name: "smaple"
+- name: simple hello world playbook
+  hosts: all
+  connection: local
+  tasks:
+    ansible.builtin.debug:
+      msg: Hello World
