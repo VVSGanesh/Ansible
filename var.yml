@@ -30,3 +30,15 @@
     - name: "variable in file"
       ansible.builtin.debug:
         msg: url == {{url}}
+
+- name: "Using register"
+  hosts: all
+  become: true
+  connection: local
+  tasks:
+    - name: using register
+      ansible.builtin.shell: date
+      register: out
+    - name: print out
+      ansible.builtin.debug:
+        msg: "{{out}}"
