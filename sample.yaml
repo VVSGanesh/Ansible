@@ -2,5 +2,6 @@
   hosts: all
   connection: local
   tasks:
-    ansible.builtin.debug:
-      msg: "Hello World"
+    - name: test
+      ansible.builtin.debug:
+       msg: "Hello World"
