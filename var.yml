@@ -24,7 +24,7 @@
   hosts: all
   become: true
   connection: local
-  var_files:
+  vars_files:
     -variable.yml
   tasks:
     - name: "variable in file"
