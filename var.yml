@@ -19,3 +19,14 @@
         msg: url == {{url}}
       vars:
         url: task.example.com
+
+- name: Declaring variable in file level
+  hosts: all
+  become: true
+  connection: local
+  var_files:
+    -variable.yml
+  tasks:
+    - name: "variable in file"
+      ansible.builtin.debug:
+        msg: url == {{url}}
