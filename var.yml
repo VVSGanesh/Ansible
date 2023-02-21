@@ -25,7 +25,7 @@
   become: true
   connection: local
   vars_files:
-    -variable.yml
+    - variable.yml
   tasks:
     - name: "variable in file"
       ansible.builtin.debug:
