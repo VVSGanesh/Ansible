@@ -1,0 +1,21 @@
+- name: copy mongodb repo files
+  ansible.builtin.copy:
+    src: mongo.repo
+    desc: /etc/yum.repos.d/mongo.repo
+
+- name: Install mongodb server
+  ansible.builtin.service:
+    name: mongodb-org -y
+
+
+- name: Replace old linsting port of mongodb
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: restart and enable mongod service
+  ansible.builtin.service:
+    name: mongod
+    enabled: yes
+    state: restarted
