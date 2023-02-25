@@ -1,0 +1,19 @@
+- name: repo files for redis
+  ansible.builtin.yum:
+    name:
+    - https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    - redis
+    state: installed
+
+- name: enable 6.2
+  ansible.builtin.shell: dnf module enable redis:remi-6.2 -y
+
+
+- name: update listing ports
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- ansible.builtin.include_role:
+    name: servicestart.yml
