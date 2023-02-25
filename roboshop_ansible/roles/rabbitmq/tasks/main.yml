@@ -1,0 +1,24 @@
+- name: Configuration for erlan and rabbitmq
+  ansible.builtin.shell:
+      - https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
+      - https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
+
+
+- name: install erlang and rabbitmq
+  ansible.builtin.yum:
+    - erlang
+    - rabbitmq-server
+
+- name:
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: roboshop123
+    permissions:
+      - vhost: /
+        configure_priv: .*
+        read_priv: .*
+        write_priv: .*
+    state: present
+
+- ansible.builtin.include_role:
+    name: servicestart.yml

@@ -1,0 +1,5 @@
+- name: restart and enable {{service}} service
+  ansible.builtin.service:
+    name: {{service}}
+    enabled: yes
+    state: restarted
