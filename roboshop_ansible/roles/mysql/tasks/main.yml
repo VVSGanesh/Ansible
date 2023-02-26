@@ -9,6 +9,7 @@
 - name: Install MySQL 5.7
   ansible.builtin.yum:
     name: mysql-community-server
+    state: installed
 
 - name: Reset default root password
   ansible.builtin.shell: mysql_secure_installation --set-root-pass {{roboshop_mysql_pass}}
