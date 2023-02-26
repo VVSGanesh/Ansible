@@ -11,20 +11,21 @@
       - rabbitmq-server
     state: installed
 
-- name: Add application user
-  community.rabbitmq.rabbitmq_user:
-    user: roboshop
-    password: "{{roboshop_rabbitmq_password}}"
-    permissions:
-      - vhost: /
-        configure_priv: .*
-        read_priv: .*
-        write_priv: .*
-    state: present
-    tags: administrator
-
 - name: restart and enable rabbitmq service
   ansible.builtin.service:
     name: rabbitmq
     enabled: yes
     state: restarted
+
+- name: Add application user
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: "{{roboshop_rabbitmq_password}}"
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+    tags: administrator
+
+
