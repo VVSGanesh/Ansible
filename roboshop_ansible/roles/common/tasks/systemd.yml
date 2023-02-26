@@ -1,6 +1,6 @@
 - name: Copy the service file
   ansible.builtin.copy:
-    src: {{component}}.service
+    src: "{{component}}.service"
     dest: /etc/systemd/system/{{component}}.service
 
 - name: Re-loading demon
@@ -8,5 +8,5 @@
     demon_reload: true
     state: restart
     enable: yes
-    name: {{component}}
+    name: "{{component}}"
 
