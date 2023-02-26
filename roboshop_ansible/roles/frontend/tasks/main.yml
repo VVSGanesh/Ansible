@@ -24,5 +24,6 @@
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
 
-- ansible.builtin.include_tasks:
+- name: including service tasks
+  ansible.builtin.include_tasks:
     name: servicestart.yml
