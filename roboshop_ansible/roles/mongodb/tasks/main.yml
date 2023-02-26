@@ -4,8 +4,9 @@
     dest: /etc/yum.repos.d/mongo.repo
 
 - name: Install mongodb server
-  ansible.builtin.service:
+  ansible.builtin.yum:
     name: mongodb-org -y
+    state: installed
 
 
 - name: Replace old linsting port of mongodb
