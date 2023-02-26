@@ -18,7 +18,4 @@
     dest: /app
     remote_src: yes
 
-- name: install dependencies
-  ansible.builtin.npm:
-    name: express
-    path: /app
+
