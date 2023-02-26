@@ -1,5 +1,7 @@
 - name: load sql schema
   community.mysql.mysql_db:
+    state: import
+    name: all
     login_user: root
     login_password: "{{mysql_pass}}"
     login-host: dummy
