@@ -1,0 +1,24 @@
+- name: Add user roboshop
+  ansible.builtin.user:
+    name: roboshop
+
+- name: Remove the default content folder
+  ansible.builtin.file:
+    path: /app
+    state: absent
+
+- name: Create HTTP Document Directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
+
+- name: Download code and unzip of {{component}}
+  ansible.builtin.unarchive:
+    url: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
+    dest: /app
+    remote_src: yes
+
+- name: install dependencies
+  ansible.builtin.npm:
+    name: express
+    path: /app

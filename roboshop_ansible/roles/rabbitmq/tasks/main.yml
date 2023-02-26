@@ -1,5 +1,6 @@
 - name: Configuration for erlan and rabbitmq
-  ansible.builtin.shell:
+  ansible.builtin.shell: curl -s {{item}} | bash
+  loop:
       - https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
       - https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
 
@@ -9,7 +10,7 @@
     - erlang
     - rabbitmq-server
 
-- name:
+- name: Add application user
   community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: roboshop123
@@ -19,6 +20,7 @@
         read_priv: .*
         write_priv: .*
     state: present
+    tags: administrator
 
-- ansible.builtin.include_role:
+- ansible.builtin.include_tasks:
     name: servicestart.yml
