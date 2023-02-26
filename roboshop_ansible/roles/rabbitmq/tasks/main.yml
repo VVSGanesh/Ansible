@@ -9,6 +9,7 @@
   ansible.builtin.yum:
     - erlang
     - rabbitmq-server
+  state: installed
 
 - name: Add application user
   community.rabbitmq.rabbitmq_user:
