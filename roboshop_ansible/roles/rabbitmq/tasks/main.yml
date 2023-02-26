@@ -13,7 +13,7 @@
 - name: Add application user
   community.rabbitmq.rabbitmq_user:
     user: roboshop
-    password: { { roboshop_rabbitmq_password } }
+    password: {{roboshop_rabbitmq_password}}
     permissions:
       - vhost: /
         configure_priv: .*
