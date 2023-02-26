@@ -1,6 +1,7 @@
 - name: install nginx
   ansible.builtin.service:
     name: nginx
+    state: installed
 
 - name: Remove the default content folder
   ansible.builtin.file:
