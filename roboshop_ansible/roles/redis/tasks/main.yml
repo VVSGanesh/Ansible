@@ -15,6 +15,9 @@
     regexp: '127.0.0.1'
     replace: '0.0.0.0'
 
-- ansible.builtin.include_tasks:
-    name: servicestart.yml
+- name: restart and enable reddis service
+  ansible.builtin.service:
+    name: redis
+    enabled: yes
+    state: restarted
 

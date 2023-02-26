@@ -22,5 +22,8 @@
     state: present
     tags: administrator
 
-- ansible.builtin.include_tasks:
-    name: servicestart.yml
+- name: restart and enable rabbitmq service
+  ansible.builtin.service:
+    name: rabbitmq
+    enabled: yes
+    state: restarted
