@@ -6,7 +6,7 @@
 - name: Re-loading demon
   ansible.builtin.systemd:
     demon_reload: true
-    state: restart
     enable: yes
+    state: started
     name: "{{component}}"
 
