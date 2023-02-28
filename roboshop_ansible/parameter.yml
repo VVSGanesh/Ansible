@@ -1,0 +1,19 @@
+- name: Create the parameters for roboshop project
+  community.aws.ssm_parameter:
+    name: "{{item.name}}"
+    value: "{{item.value}}"
+    loop:
+      - {name: "dev.catalogue.MONGO_URL", value: "mongodb://<MONGODB-SERVER-IPADDRESS>:27017/catalogue"}
+      - {name: "dev.catalogue.MONGO", value: "true"}
+      - {name: "dev.frontend.catalogue_url", value: "proxy_pass http://localhost:8080/"}
+      - {name: "dev.frontend.user_url", value: "proxy_pass http://localhost:8080/"}
+      - {name: "dev.frontend.cart_url", value: "proxy_pass http://localhost:8080/"}
+      - {name: "dev.frontend.shipping_url", value: "proxy_pass http://localhost:8080/"}
+      - {name: "dev.frontend.payment_url", value: "proxy_pass http://localhost:8080/"}
+      - { name: "dev.user.MONGO_URL", value: "mongodb://<MONGODB-SERVER-IPADDRESS>:27017/users" }
+      - { name: "dev.user.MONGO", value: "true" }
+      - { name: "dev.user.REDIS_HOST", value: "<REDIS-SERVER-IP>" }
+      - { name: "dev.cart.CATALOGUE_HOST", value: "<CATALOGUE-SERVER-IP>" }
+      - { name: "dev.cart.REDIS_HOST", value: "<REDIS-SERVER-IP>" }
+      - { name: "dev.shipping.CART_ENDPOINT", value: "<CART-SERVER-IPADDRESS>:8080" }
+      - { name: "dev.shipping.DB_HOST", value: "<MYSQL-SERVER-IPADDRESS>" }
