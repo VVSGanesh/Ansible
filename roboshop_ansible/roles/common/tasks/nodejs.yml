@@ -7,7 +7,7 @@
     name: nodejs
     state: installed
 
-- name: include app re req task
+- name: include app pre req task
   ansible.builtin.include_tasks:
     file: app_pre_req.yml
 

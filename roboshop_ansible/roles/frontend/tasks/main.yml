@@ -3,26 +3,11 @@
     name: nginx
     state: installed
 
-- name: Remove the default content folder
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
+- name: including common role
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: app_pre_req
 
-- name: Create HTTP Document Directory
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: directory
-
-- name: Download code and unzip
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-    dest: /usr/share/nginx/html
-    remote_src: yes
-
-- name: Copy the configuration file
-  ansible.builtin.copy:
-    src: roboshop.conf
-    dest: /etc/nginx/default.d/roboshop.conf
 
 - name: restart and enable nginx service
   ansible.builtin.service:

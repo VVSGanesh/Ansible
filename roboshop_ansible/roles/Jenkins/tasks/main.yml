@@ -1,0 +1,13 @@
+- name: Jenkins repo files
+  ansible.builtin.get_url:
+    url: https://pkg.jenkins.io/redhat/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+
+- name: Installing Jenkins
+  ansible.builtin.yum:
+    name: {{item}}
+    state: installed
+    loop:
+      - fontconfig
+      - java-11-openjdk
+      - jenkins
