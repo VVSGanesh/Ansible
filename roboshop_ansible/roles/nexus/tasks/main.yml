@@ -1,0 +1,11 @@
+- name: Install Java for nexus
+  ansible.builtin.yum:
+    name: java-1.8.0-openjdk.x86_64
+    state: installed
+
+- name: install the tar file on nexus
+  ansible.builtin.unarchive:
+    src: https://download.sonatype.com/nexus/3/nexus-3.49.0-02-unix.tar.gz
+    dest: /home/centos/
+    remote_src: yes
+
